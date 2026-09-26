@@ -1,0 +1,124 @@
+{
+  "orders": [
+    {
+      "order_id": "O-1001",
+      "listing_id": "L-700123",
+      "locked_version_id": "lv-700123-01",
+      "locked_batch_no": "B2026-07A",
+      "buyer_ref": "B-ALPHA",
+      "fulfilled_at": "2026-09-10T10:12:00+08:00",
+      "page_view": {
+        "snapshot_id": "snap-lv01-20260901",
+        "listing_hash": "sha256:yangli-lv01-base",
+        "price": 26.5
+      },
+      "shipment": {
+        "shipping_entity_id": "E-01",
+        "warehouse_address": "示例省甲市临江区健康路1号（虚构）",
+        "shipped_at": "2026-09-10T18:00:00+08:00"
+      },
+      "trace_codes": ["T1001", "T1002"],
+      "observations": { "low_price": false, "cross_region": false }
+    },
+    {
+      "order_id": "O-1002",
+      "listing_id": "L-700123",
+      "locked_version_id": "lv-700123-01",
+      "locked_batch_no": "B2026-08B",
+      "buyer_ref": "B-BRAVO",
+      "fulfilled_at": "2026-09-12T09:30:00+08:00",
+      "page_view": {
+        "snapshot_id": "snap-lv01-20260901",
+        "listing_hash": "sha256:yangli-lv01-base",
+        "price": 22.8
+      },
+      "shipment": {
+        "shipping_entity_id": "E-02",
+        "warehouse_address": "示例省乙市海东区港口大道8号（虚构）",
+        "shipped_at": "2026-09-12T20:00:00+08:00"
+      },
+      "trace_codes": ["T2001"],
+      "observations": { "low_price": true, "cross_region": true }
+    },
+    {
+      "order_id": "O-1003",
+      "listing_id": "L-700123",
+      "locked_version_id": "lv-700123-01",
+      "locked_batch_no": "B2026-07A",
+      "buyer_ref": "B-CHARLIE",
+      "fulfilled_at": "2026-09-15T14:05:00+08:00",
+      "page_view": {
+        "snapshot_id": "snap-lv01-20260901",
+        "listing_hash": "sha256:yangli-lv01-base",
+        "price": 26.5
+      },
+      "shipment": {
+        "shipping_entity_id": "E-01",
+        "warehouse_address": "示例省甲市临江区健康路1号（虚构）",
+        "shipped_at": "2026-09-15T21:00:00+08:00"
+      },
+      "trace_codes": ["T1003", "T1004"],
+      "observations": { "low_price": false, "cross_region": false }
+    },
+    {
+      "order_id": "O-1004",
+      "listing_id": "L-700123",
+      "locked_version_id": "lv-700123-01",
+      "locked_batch_no": "B2026-07A",
+      "buyer_ref": "B-DELTA",
+      "fulfilled_at": "2026-09-16T11:20:00+08:00",
+      "page_view": {
+        "snapshot_id": "snap-unknown-20260916",
+        "listing_hash": "sha256:yangli-lv01-swapped",
+        "price": 26.5
+      },
+      "shipment": {
+        "shipping_entity_id": "E-01",
+        "warehouse_address": "示例省甲市临江区健康路1号（虚构）",
+        "shipped_at": "2026-09-16T19:30:00+08:00"
+      },
+      "trace_codes": ["T1005"],
+      "observations": { "low_price": false, "cross_region": false }
+    },
+    {
+      "order_id": "O-1005",
+      "listing_id": "L-700123",
+      "locked_version_id": "lv-700123-01",
+      "locked_batch_no": "B2026-08B",
+      "buyer_ref": "B-ECHO",
+      "fulfilled_at": "2026-09-18T16:40:00+08:00",
+      "page_view": {
+        "snapshot_id": "snap-lv01-20260901",
+        "listing_hash": "sha256:yangli-lv01-base",
+        "price": 26.5
+      },
+      "shipment": {
+        "shipping_entity_id": "E-01",
+        "warehouse_address": "示例省甲市临江区健康路1号（虚构）",
+        "shipped_at": "2026-09-18T22:10:00+08:00"
+      },
+      "trace_codes": ["T9999", "T1003"],
+      "observations": { "low_price": false, "cross_region": false }
+    },
+    {
+      "order_id": "O-1006",
+      "listing_id": "L-700123",
+      "locked_version_id": "lv-700123-01",
+      "locked_batch_no": "B2026-08B",
+      "buyer_ref": "B-FOXTROT",
+      "fulfilled_at": "2026-09-19T13:00:00+08:00",
+      "page_view": {
+        "snapshot_id": "snap-lv01-20260901",
+        "listing_hash": "sha256:yangli-lv01-base",
+        "price": 26.5
+      },
+      "shipment": {
+        "shipping_entity_id": "E-99",
+        "warehouse_address": "示例省丙市城郊仓库群17号库（虚构）",
+        "shipped_at": "2026-09-19T21:40:00+08:00"
+      },
+      "trace_codes": ["T2040"],
+      "observations": { "low_price": false, "cross_region": true }
+    }
+  ]
+}

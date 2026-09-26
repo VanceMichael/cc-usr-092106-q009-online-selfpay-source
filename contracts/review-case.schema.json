@@ -1,0 +1,314 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "来源审查案卷",
+  "description": "一次来源处置的完整留痕：信号、证据、分级处置、商家申诉、平台复核、监管通知、买家批次告知、旧链接重新上架阻断与访问日志。案卷中只出现订单号，不出现买家身份字段。",
+  "type": "object",
+  "required": [
+    "case_id",
+    "listing_id",
+    "opened_at",
+    "status",
+    "signals",
+    "evidence",
+    "dispositions",
+    "appeals",
+    "reviews",
+    "regulator_notifications",
+    "buyer_notifications",
+    "relist_attempts",
+    "unresolved_issues",
+    "recovery_conditions",
+    "access_log"
+  ],
+  "properties": {
+    "case_id": { "type": "string", "minLength": 1 },
+    "listing_id": { "type": "string", "minLength": 1 },
+    "opened_at": { "type": "string", "format": "date-time" },
+    "status": {
+      "type": "string",
+      "enum": ["open", "closed"]
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["signal_id", "type", "detected_at", "summary"],
+        "properties": {
+          "signal_id": { "type": "string", "minLength": 1 },
+          "type": {
+            "type": "string",
+            "enum": [
+              "duplicate_trace_code",
+              "expired_source_proof",
+              "listing_substitution",
+              "unreported_shipping",
+              "trace_code_out_of_range",
+              "cold_chain_breach"
+            ]
+          },
+          "detected_at": { "type": "string", "format": "date-time" },
+          "summary": { "type": "string", "minLength": 1 },
+          "order_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "qual_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "description": "每条处置必须引用至少一条具体证据；证据必须指明来源与采集时间。",
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["evidence_id", "signal_id", "kind", "summary", "source_ref", "captured_at"],
+            "properties": {
+              "evidence_id": { "type": "string", "minLength": 1 },
+              "signal_id": { "type": "string", "minLength": 1 },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "trace_code_record",
+                  "qualification_record",
+                  "invoice_record",
+                  "page_snapshot_diff",
+                  "shipment_record",
+                  "temperature_record",
+                  "merchant_material"
+                ]
+              },
+              "summary": { "type": "string", "minLength": 1 },
+              "source_ref": { "type": "string", "minLength": 1 },
+              "captured_at": { "type": "string", "format": "date-time" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "dispositions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "disposition_id",
+          "level",
+          "action",
+          "decided_at",
+          "decided_by",
+          "evidence_ids",
+          "rationale",
+          "scope",
+          "state"
+        ],
+        "properties": {
+          "disposition_id": { "type": "string", "minLength": 1 },
+          "level": {
+            "type": "integer",
+            "enum": [1, 2, 3],
+            "description": "1=关注观察，2=限制（暂停新订单/流量），3=下架。"
+          },
+          "action": {
+            "type": "string",
+            "enum": ["observe", "restrict", "delist"]
+          },
+          "decided_at": { "type": "string", "format": "date-time" },
+          "decided_by": { "type": "string", "minLength": 1 },
+          "evidence_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "rationale": { "type": "string", "minLength": 1 },
+          "scope": {
+            "type": "object",
+            "required": ["version_ids", "batch_nos", "order_ids"],
+            "properties": {
+              "version_ids": { "type": "array", "items": { "type": "string" } },
+              "batch_nos": { "type": "array", "items": { "type": "string" } },
+              "order_ids": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": false
+          },
+          "state": {
+            "type": "string",
+            "enum": ["active", "overturned"],
+            "description": "复核推翻后为 overturned，不再阻断重新上架。"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "appeals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["appeal_id", "disposition_id", "filed_at", "grounds", "status"],
+        "properties": {
+          "appeal_id": { "type": "string", "minLength": 1 },
+          "disposition_id": { "type": "string", "minLength": 1 },
+          "filed_at": { "type": "string", "format": "date-time" },
+          "grounds": { "type": "string", "minLength": 1 },
+          "merchant_material_refs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "upheld", "overturned", "adjusted"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["review_id", "appeal_id", "reviewer_role", "reviewed_at", "conclusion", "notes"],
+        "properties": {
+          "review_id": { "type": "string", "minLength": 1 },
+          "appeal_id": { "type": "string", "minLength": 1 },
+          "reviewer_role": {
+            "type": "string",
+            "enum": ["supervisor", "compliance_lead"],
+            "description": "普通审核员不能复核自己层级作出的处置，复核须由上级角色完成。"
+          },
+          "reviewed_at": { "type": "string", "format": "date-time" },
+          "conclusion": {
+            "type": "string",
+            "enum": ["uphold", "overturn", "adjust"]
+          },
+          "notes": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "regulator_notifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["notice_id", "sent_at", "authority", "summary", "signal_ids"],
+        "properties": {
+          "notice_id": { "type": "string", "minLength": 1 },
+          "sent_at": { "type": "string", "format": "date-time" },
+          "authority": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "signal_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "buyer_notifications": {
+      "type": "array",
+      "description": "买家告知只能发给实际购买了所通知批次的订单，禁止扩大到无关订单。",
+      "items": {
+        "type": "object",
+        "required": ["notice_id", "sent_at", "batch_no", "order_ids", "summary"],
+        "properties": {
+          "notice_id": { "type": "string", "minLength": 1 },
+          "sent_at": { "type": "string", "format": "date-time" },
+          "batch_no": { "type": "string", "minLength": 1 },
+          "order_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "summary": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "relist_attempts": {
+      "type": "array",
+      "description": "旧链接重新上架的尝试；存在未解决问题或未恢复条件时必须被阻断。",
+      "items": {
+        "type": "object",
+        "required": ["attempt_id", "old_listing_id", "requested_at", "result"],
+        "properties": {
+          "attempt_id": { "type": "string", "minLength": 1 },
+          "old_listing_id": { "type": "string", "minLength": 1 },
+          "requested_at": { "type": "string", "format": "date-time" },
+          "result": {
+            "type": "string",
+            "enum": ["blocked", "allowed"]
+          },
+          "blocking_reasons": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "unresolved_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["issue_id", "signal_id", "description", "status"],
+        "properties": {
+          "issue_id": { "type": "string", "minLength": 1 },
+          "signal_id": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "status": {
+            "type": "string",
+            "enum": ["open", "resolved"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recovery_conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["condition_id", "description", "satisfied"],
+        "properties": {
+          "condition_id": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "satisfied": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "access_log": {
+      "type": "array",
+      "description": "案卷访问留痕。普通审核员只能访问本案处置范围内订单对应的买家假名，不得查看无关买家信息。",
+      "items": {
+        "type": "object",
+        "required": ["entry_id", "actor_id", "role", "action", "case_scoped", "buyer_refs_accessed", "accessed_at"],
+        "properties": {
+          "entry_id": { "type": "string", "minLength": 1 },
+          "actor_id": { "type": "string", "minLength": 1 },
+          "role": {
+            "type": "string",
+            "enum": ["reviewer", "supervisor", "compliance_lead"]
+          },
+          "action": { "type": "string", "minLength": 1 },
+          "case_scoped": { "type": "boolean" },
+          "buyer_refs_accessed": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "accessed_at": { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

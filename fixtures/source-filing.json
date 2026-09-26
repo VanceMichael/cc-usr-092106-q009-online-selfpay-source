@@ -1,0 +1,118 @@
+{
+  "filing_id": "filing-700123-01",
+  "merchant": {
+    "merchant_id": "M-880",
+    "name": "康泽大药房（虚构样例）"
+  },
+  "listing_version": {
+    "listing_id": "L-700123",
+    "version_id": "lv-700123-01",
+    "product_name": "样例维释片 30mg×30片/盒（虚构样品）",
+    "specification": "30mg×30片/盒",
+    "self_pay": true
+  },
+  "qualifications": [
+    {
+      "qual_id": "Q1",
+      "type": "business_license",
+      "number": "9100000-YANGLI-0001",
+      "holder": "康泽大药房（虚构样例）",
+      "issued_at": "2020-01-01",
+      "expires_at": "2030-12-31"
+    },
+    {
+      "qual_id": "Q2",
+      "type": "drug_trade_license",
+      "number": "YAOJING-YANGLI-0002",
+      "holder": "康泽大药房（虚构样例）",
+      "issued_at": "2021-09-01",
+      "expires_at": "2026-08-31"
+    },
+    {
+      "qual_id": "Q3",
+      "type": "gsp_certificate",
+      "number": "GSP-YANGLI-0003",
+      "holder": "康泽大药房（虚构样例）",
+      "issued_at": "2023-05-01",
+      "expires_at": "2028-04-30"
+    },
+    {
+      "qual_id": "Q4",
+      "type": "online_drug_sales_qualification",
+      "number": "WANGYAO-YANGLI-0004",
+      "holder": "康泽大药房（虚构样例）",
+      "issued_at": "2023-05-01",
+      "expires_at": "2028-04-30"
+    }
+  ],
+  "purchase_batches": [
+    {
+      "batch_no": "B2026-07A",
+      "quantity": 100,
+      "purchased_at": "2026-07-05",
+      "supplier_name": "示例医药批发有限公司（虚构）",
+      "supplier_license_no": "SUP-YANGLI-001",
+      "invoice_summary": {
+        "invoice_no": "FP-YANGLI-0701",
+        "invoiced_at": "2026-07-05",
+        "amount": 4200.0,
+        "seller": "示例医药批发有限公司（虚构）",
+        "buyer": "康泽大药房（虚构样例）"
+      },
+      "trace_code_ranges": [
+        { "prefix": "T", "range_start": 1001, "range_end": 1100 }
+      ],
+      "cold_chain": {
+        "required": false,
+        "transport_commitment": "常温避光运输，厢式货车配送（虚构承诺）",
+        "monitoring_evidence": "常温运输温控承诺函 2026-07 版（虚构材料编号 NC-07A）"
+      }
+    },
+    {
+      "batch_no": "B2026-08B",
+      "quantity": 60,
+      "purchased_at": "2026-08-09",
+      "supplier_name": "示例医药批发有限公司（虚构）",
+      "supplier_license_no": "SUP-YANGLI-001",
+      "invoice_summary": {
+        "invoice_no": "FP-YANGLI-0802",
+        "invoiced_at": "2026-08-09",
+        "amount": 2610.0,
+        "seller": "示例医药批发有限公司（虚构）",
+        "buyer": "康泽大药房（虚构样例）"
+      },
+      "trace_code_ranges": [
+        { "prefix": "T", "range_start": 2001, "range_end": 2060 }
+      ],
+      "cold_chain": {
+        "required": false,
+        "transport_commitment": "常温避光运输，厢式货车配送（虚构承诺）",
+        "monitoring_evidence": "常温运输温控承诺函 2026-08 版（虚构材料编号 NC-08B）"
+      }
+    }
+  ],
+  "shipping_entities": [
+    {
+      "entity_id": "E-01",
+      "name": "康泽大药房直营仓（虚构）",
+      "license_no": "JY-YANGLI-01",
+      "warehouse_addresses": ["示例省甲市临江区健康路1号（虚构）"]
+    },
+    {
+      "entity_id": "E-02",
+      "name": "同康连锁授权配送中心（虚构）",
+      "license_no": "JY-YANGLI-02",
+      "warehouse_addresses": ["示例省乙市海东区港口大道8号（虚构）"],
+      "note": "已报备的跨省授权配送仓，允许异地发货"
+    }
+  ],
+  "page_snapshot": {
+    "snapshot_id": "snap-lv01-20260901",
+    "captured_at": "2026-09-01T08:00:00+08:00",
+    "listing_hash": "sha256:yangli-lv01-base",
+    "price": 26.5,
+    "currency": "CNY"
+  },
+  "submitted_at": "2026-09-01T08:05:00+08:00",
+  "status": "active"
+}

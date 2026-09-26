@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "在售版本来源报备",
+  "description": "商家为每个在售商品版本提交的经营资质、采购批次、追溯码范围、票据摘要、实际发货主体与温控承诺。所有字段均为虚构样例。",
+  "type": "object",
+  "required": [
+    "filing_id",
+    "merchant",
+    "listing_version",
+    "qualifications",
+    "purchase_batches",
+    "shipping_entities",
+    "page_snapshot",
+    "submitted_at",
+    "status"
+  ],
+  "properties": {
+    "filing_id": { "type": "string", "minLength": 1 },
+    "merchant": {
+      "type": "object",
+      "required": ["merchant_id", "name"],
+      "properties": {
+        "merchant_id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "listing_version": {
+      "type": "object",
+      "required": ["listing_id", "version_id", "product_name", "specification", "self_pay"],
+      "properties": {
+        "listing_id": { "type": "string", "minLength": 1 },
+        "version_id": { "type": "string", "minLength": 1 },
+        "product_name": { "type": "string", "minLength": 1 },
+        "specification": { "type": "string", "minLength": 1 },
+        "self_pay": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "qualifications": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["qual_id", "type", "number", "holder", "issued_at", "expires_at"],
+        "properties": {
+          "qual_id": { "type": "string", "minLength": 1 },
+          "type": {
+            "type": "string",
+            "enum": [
+              "business_license",
+              "drug_trade_license",
+              "gsp_certificate",
+              "online_drug_sales_qualification"
+            ]
+          },
+          "number": { "type": "string", "minLength": 1 },
+          "holder": { "type": "string", "minLength": 1 },
+          "issued_at": { "type": "string", "format": "date" },
+          "expires_at": { "type": "string", "format": "date" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "purchase_batches": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "batch_no",
+          "quantity",
+          "purchased_at",
+          "supplier_name",
+          "supplier_license_no",
+          "invoice_summary",
+          "trace_code_ranges",
+          "cold_chain"
+        ],
+        "properties": {
+          "batch_no": { "type": "string", "minLength": 1 },
+          "quantity": { "type": "integer", "minimum": 1 },
+          "purchased_at": { "type": "string", "format": "date" },
+          "supplier_name": { "type": "string", "minLength": 1 },
+          "supplier_license_no": { "type": "string", "minLength": 1 },
+          "invoice_summary": {
+            "type": "object",
+            "required": ["invoice_no", "invoiced_at", "amount", "seller", "buyer"],
+            "properties": {
+              "invoice_no": { "type": "string", "minLength": 1 },
+              "invoiced_at": { "type": "string", "format": "date" },
+              "amount": { "type": "number", "minimum": 0 },
+              "seller": { "type": "string", "minLength": 1 },
+              "buyer": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "trace_code_ranges": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["prefix", "range_start", "range_end"],
+              "properties": {
+                "prefix": { "type": "string", "minLength": 1 },
+                "range_start": { "type": "integer", "minimum": 0 },
+                "range_end": { "type": "integer", "minimum": 0 }
+              },
+              "additionalProperties": false
+            }
+          },
+          "cold_chain": {
+            "type": "object",
+            "required": ["required", "transport_commitment", "monitoring_evidence"],
+            "properties": {
+              "required": { "type": "boolean" },
+              "storage_range_celsius": {
+                "type": "object",
+                "required": ["min", "max"],
+                "properties": {
+                  "min": { "type": "number" },
+                  "max": { "type": "number" }
+                },
+                "additionalProperties": false
+              },
+              "transport_commitment": { "type": "string", "minLength": 1 },
+              "monitoring_evidence": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "shipping_entities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["entity_id", "name", "license_no", "warehouse_addresses"],
+        "properties": {
+          "entity_id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "license_no": { "type": "string", "minLength": 1 },
+          "warehouse_addresses": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "page_snapshot": {
+      "type": "object",
+      "required": ["snapshot_id", "captured_at", "listing_hash", "price", "currency"],
+      "properties": {
+        "snapshot_id": { "type": "string", "minLength": 1 },
+        "captured_at": { "type": "string", "format": "date-time" },
+        "listing_hash": { "type": "string", "minLength": 1 },
+        "price": { "type": "number", "minimum": 0 },
+        "currency": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "submitted_at": { "type": "string", "format": "date-time" },
+    "status": {
+      "type": "string",
+      "enum": ["active", "superseded"]
+    }
+  },
+  "additionalProperties": false
+}
