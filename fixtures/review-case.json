@@ -1,0 +1,392 @@
+{
+  "case_id": "case-2026-0001",
+  "listing_versions": [
+    {
+      "listing_version_id": "lv-1001",
+      "merchant_id": "m-huirentang",
+      "product": {
+        "name": "苯磺酸氨氯地平片",
+        "spec": "5mg×28片",
+        "manufacturer": "虚构制药一厂",
+        "approval_number": "国药准字H00000001"
+      },
+      "qualifications": [
+        {
+          "kind": "药品经营许可证",
+          "number": "渝AA0000001",
+          "valid_until": "2028-05-31"
+        }
+      ],
+      "purchase_batches": [
+        {
+          "batch_id": "B2026-031",
+          "trace_code_range": {
+            "prefix": "TC",
+            "start": 1,
+            "end": 5000
+          },
+          "invoice_summary": {
+            "invoice_number": "INV-2026-0001",
+            "seller": "虚构医药批发公司",
+            "amount_yuan": 18600,
+            "issued_at": "2026-03-12"
+          },
+          "quantity": 2000
+        }
+      ],
+      "shipping_entity": {
+        "name": "汇仁堂大药房（虚构）重庆仓",
+        "license_number": "渝AA0000001",
+        "warehouse_region": "重庆"
+      },
+      "temperature_commitment": {
+        "mode": "常温",
+        "range_note": "10–30℃ 全程温度记录"
+      },
+      "status": "active",
+      "submitted_at": "2026-03-15T09:00:00+08:00"
+    },
+    {
+      "listing_version_id": "lv-2001",
+      "merchant_id": "m-kangtai",
+      "product": {
+        "name": "阿托伐他汀钙片",
+        "spec": "20mg×14片",
+        "manufacturer": "虚构制药二厂",
+        "approval_number": "国药准字H00000002"
+      },
+      "qualifications": [
+        {
+          "kind": "药品经营许可证",
+          "number": "豫BB0000002",
+          "valid_until": "2026-06-30"
+        }
+      ],
+      "purchase_batches": [
+        {
+          "batch_id": "B2025-117",
+          "trace_code_range": {
+            "prefix": "TC",
+            "start": 8001,
+            "end": 9000
+          },
+          "invoice_summary": {
+            "invoice_number": "INV-2025-1177",
+            "seller": "虚构医药批发公司",
+            "amount_yuan": 9200,
+            "issued_at": "2025-11-02"
+          },
+          "quantity": 800
+        },
+        {
+          "batch_id": "B2025-118",
+          "trace_code_range": {
+            "prefix": "TC",
+            "start": 9001,
+            "end": 9500
+          },
+          "invoice_summary": {
+            "invoice_number": "INV-2025-1180",
+            "seller": "虚构医药批发公司",
+            "amount_yuan": 4600,
+            "issued_at": "2025-12-20"
+          },
+          "quantity": 400
+        }
+      ],
+      "shipping_entity": {
+        "name": "康泰医药（虚构）郑州仓",
+        "license_number": "豫BB0000002",
+        "warehouse_region": "河南"
+      },
+      "temperature_commitment": {
+        "mode": "常温",
+        "range_note": "10–30℃ 全程温度记录"
+      },
+      "status": "removed",
+      "submitted_at": "2025-11-20T10:00:00+08:00"
+    },
+    {
+      "listing_version_id": "lv-2002",
+      "merchant_id": "m-kangtai",
+      "product": {
+        "name": "阿托伐他汀钙片",
+        "spec": "20mg×14片",
+        "manufacturer": "虚构制药二厂",
+        "approval_number": "国药准字H00000002"
+      },
+      "qualifications": [
+        {
+          "kind": "药品经营许可证",
+          "number": "豫BB0000002",
+          "valid_until": "2027-06-30"
+        }
+      ],
+      "purchase_batches": [
+        {
+          "batch_id": "B2026-201",
+          "trace_code_range": {
+            "prefix": "TC",
+            "start": 9601,
+            "end": 9999
+          },
+          "invoice_summary": {
+            "invoice_number": "INV-2026-0880",
+            "seller": "虚构医药批发公司",
+            "amount_yuan": 5100,
+            "issued_at": "2026-09-05"
+          },
+          "quantity": 400
+        }
+      ],
+      "shipping_entity": {
+        "name": "康泰医药（虚构）郑州仓",
+        "license_number": "豫BB0000002",
+        "warehouse_region": "河南"
+      },
+      "temperature_commitment": {
+        "mode": "常温",
+        "range_note": "10–30℃ 全程温度记录"
+      },
+      "status": "closed",
+      "replaces_version_id": "lv-2001",
+      "submitted_at": "2026-09-10T14:00:00+08:00"
+    },
+    {
+      "listing_version_id": "lv-3007",
+      "merchant_id": "m-shunyao",
+      "product": {
+        "name": "阿托伐他汀钙片",
+        "spec": "20mg×14片",
+        "manufacturer": "虚构制药二厂",
+        "approval_number": "国药准字H00000002"
+      },
+      "qualifications": [
+        {
+          "kind": "药品经营许可证",
+          "number": "鲁CC0000003",
+          "valid_until": "2027-12-31"
+        }
+      ],
+      "purchase_batches": [
+        {
+          "batch_id": "B2025-200",
+          "trace_code_range": {
+            "prefix": "TC",
+            "start": 8100,
+            "end": 8200
+          },
+          "invoice_summary": {
+            "invoice_number": "INV-2025-3300",
+            "seller": "虚构医药批发公司",
+            "amount_yuan": 1200,
+            "issued_at": "2025-12-28"
+          },
+          "quantity": 100
+        }
+      ],
+      "shipping_entity": {
+        "name": "舜药大药房（虚构）济南仓",
+        "license_number": "鲁CC0000003",
+        "warehouse_region": "山东"
+      },
+      "temperature_commitment": {
+        "mode": "常温",
+        "range_note": "10–30℃ 全程温度记录"
+      },
+      "status": "suspended",
+      "submitted_at": "2026-01-10T11:00:00+08:00"
+    }
+  ],
+  "order_snapshots": [
+    {
+      "order_id": "o-9001",
+      "listing_version_id": "lv-1001",
+      "page_snapshot_id": "snap-lv1001-20260901",
+      "batch_id": "B2026-031",
+      "buyer_ref": "buyer#6f3a",
+      "fulfilled_by": "汇仁堂大药房（虚构）重庆仓",
+      "ship_from_region": "重庆",
+      "delivery_region": "黑龙江",
+      "placed_at": "2026-09-01T20:14:00+08:00"
+    },
+    {
+      "order_id": "o-7001",
+      "listing_version_id": "lv-2001",
+      "page_snapshot_id": "snap-lv2001-20260820",
+      "batch_id": "B2025-117",
+      "buyer_ref": "buyer#aa01",
+      "fulfilled_by": "顺达供应链（虚构）",
+      "ship_from_region": "广西",
+      "delivery_region": "四川",
+      "placed_at": "2026-08-20T11:02:00+08:00"
+    },
+    {
+      "order_id": "o-7002",
+      "listing_version_id": "lv-2001",
+      "page_snapshot_id": "snap-lv2001-20260821",
+      "batch_id": "B2025-117",
+      "buyer_ref": "buyer#bb02",
+      "fulfilled_by": "顺达供应链（虚构）",
+      "ship_from_region": "广西",
+      "delivery_region": "湖南",
+      "placed_at": "2026-08-21T09:40:00+08:00"
+    },
+    {
+      "order_id": "o-7003",
+      "listing_version_id": "lv-2001",
+      "page_snapshot_id": "snap-lv2001-20260819",
+      "batch_id": "B2025-118",
+      "buyer_ref": "buyer#cc03",
+      "fulfilled_by": "康泰医药（虚构）郑州仓",
+      "ship_from_region": "河南",
+      "delivery_region": "河南",
+      "placed_at": "2026-08-19T16:25:00+08:00"
+    },
+    {
+      "order_id": "o-7004",
+      "listing_version_id": "lv-2001",
+      "page_snapshot_id": "snap-lv2001-20260821",
+      "batch_id": "B2025-999",
+      "buyer_ref": "buyer#dd04",
+      "fulfilled_by": "顺达供应链（虚构）",
+      "ship_from_region": "广西",
+      "delivery_region": "云南",
+      "placed_at": "2026-08-21T22:05:00+08:00"
+    }
+  ],
+  "risk_signals": [
+    {
+      "signal_id": "sig-01",
+      "type": "low_price",
+      "listing_version_id": "lv-1001",
+      "detected_at": "2026-09-02T08:00:00+08:00",
+      "evidence_refs": ["price-watch:2026-W36"]
+    },
+    {
+      "signal_id": "sig-02",
+      "type": "cross_region_shipment",
+      "listing_version_id": "lv-1001",
+      "detected_at": "2026-09-02T08:00:00+08:00",
+      "evidence_refs": ["order:o-9001"]
+    },
+    {
+      "signal_id": "sig-03",
+      "type": "duplicate_trace_code",
+      "listing_version_id": "lv-2001",
+      "detected_at": "2026-08-22T10:00:00+08:00",
+      "evidence_refs": ["trace:TC0000008102", "filing:lv-3007"]
+    },
+    {
+      "signal_id": "sig-04",
+      "type": "expired_source_proof",
+      "listing_version_id": "lv-2001",
+      "detected_at": "2026-08-22T10:00:00+08:00",
+      "evidence_refs": ["qual:豫BB0000002"]
+    },
+    {
+      "signal_id": "sig-05",
+      "type": "cross_region_dropship",
+      "listing_version_id": "lv-2001",
+      "detected_at": "2026-08-23T09:00:00+08:00",
+      "evidence_refs": ["order:o-7001", "order:o-7002"]
+    },
+    {
+      "signal_id": "sig-06",
+      "type": "item_substitution",
+      "listing_version_id": "lv-2001",
+      "detected_at": "2026-08-23T09:30:00+08:00",
+      "evidence_refs": ["order:o-7004"]
+    }
+  ],
+  "enforcement_actions": [
+    {
+      "action_id": "act-0001",
+      "level": "takedown",
+      "listing_version_ids": ["lv-2001"],
+      "signal_ids": ["sig-03", "sig-04", "sig-05", "sig-06"],
+      "evidence": [
+        {
+          "evidence_id": "ev-01",
+          "kind": "追溯码碰撞记录",
+          "ref": "trace:TC0000008102",
+          "summary": "同一追溯码同时出现在 lv-2001 批次 B2025-117 与 lv-3007 批次 B2025-200 的备案范围内"
+        },
+        {
+          "evidence_id": "ev-02",
+          "kind": "来源证明过期",
+          "ref": "qual:豫BB0000002",
+          "summary": "药品经营许可证有效期至 2026-06-30，信号发现日 2026-08-22 已过期"
+        },
+        {
+          "evidence_id": "ev-03",
+          "kind": "发货主体不符",
+          "ref": "order:o-7001",
+          "summary": "订单实际发货主体为未备案的顺达供应链（虚构），与备案发货主体不一致"
+        },
+        {
+          "evidence_id": "ev-04",
+          "kind": "未备案批次",
+          "ref": "order:o-7004",
+          "summary": "订单使用批次 B2025-999 未出现在该版本任何采购批次备案中"
+        }
+      ],
+      "order_scope": {
+        "batch_ids": ["B2025-117", "B2025-999"],
+        "order_ids": ["o-7001", "o-7002", "o-7004"]
+      },
+      "recovery_conditions": [
+        "提交涉事批次合法来源证明与完整票据",
+        "更新备案实际发货主体并通过平台核验",
+        "平台复核通过前不得以新链接重新上架同一药品"
+      ],
+      "status": "upheld",
+      "decided_by": "reviewer-017",
+      "decided_at": "2026-08-25T15:00:00+08:00"
+    }
+  ],
+  "audit_events": [
+    {
+      "event_id": "evt-01",
+      "kind": "merchant_appeal",
+      "action_id": "act-0001",
+      "actor_role": "merchant",
+      "created_at": "2026-08-26T09:30:00+08:00",
+      "summary": "商家主张代发为临时合作仓，提交补充合作协议"
+    },
+    {
+      "event_id": "evt-02",
+      "kind": "platform_re_review",
+      "action_id": "act-0001",
+      "actor_role": "reviewer",
+      "created_at": "2026-08-28T14:00:00+08:00",
+      "summary": "复核维持下架：补充协议未覆盖涉事批次 B2025-117 与 B2025-999"
+    },
+    {
+      "event_id": "evt-03",
+      "kind": "regulator_notice",
+      "action_id": "act-0001",
+      "actor_role": "system",
+      "created_at": "2026-08-25T16:00:00+08:00",
+      "summary": "已向属地监管部门同步处置结果与证据清单"
+    },
+    {
+      "event_id": "evt-04",
+      "kind": "buyer_notice",
+      "action_id": "act-0001",
+      "actor_role": "system",
+      "created_at": "2026-08-25T16:05:00+08:00",
+      "summary": "提示批次 B2025-117 订单买家核对药品追溯码并保留票据",
+      "order_ids": ["o-7001", "o-7002"]
+    },
+    {
+      "event_id": "evt-05",
+      "kind": "buyer_notice",
+      "action_id": "act-0001",
+      "actor_role": "system",
+      "created_at": "2026-08-25T16:06:00+08:00",
+      "summary": "提示批次 B2025-999 订单买家暂停用药并联系平台核验来源",
+      "order_ids": ["o-7004"]
+    }
+  ]
+}

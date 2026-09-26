@@ -1,0 +1,547 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "自费售药来源审查案例资料",
+  "type": "object",
+  "required": [
+    "case_id",
+    "listing_versions",
+    "order_snapshots",
+    "risk_signals",
+    "enforcement_actions",
+    "audit_events"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "listing_versions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/listingVersion"
+      }
+    },
+    "order_snapshots": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/orderSnapshot"
+      }
+    },
+    "risk_signals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/riskSignal"
+      }
+    },
+    "enforcement_actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/enforcementAction"
+      }
+    },
+    "audit_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/auditEvent"
+      }
+    }
+  },
+  "$defs": {
+    "listingVersion": {
+      "title": "在售版本备案",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "listing_version_id",
+        "merchant_id",
+        "product",
+        "qualifications",
+        "purchase_batches",
+        "shipping_entity",
+        "temperature_commitment",
+        "status",
+        "submitted_at"
+      ],
+      "properties": {
+        "listing_version_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "merchant_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "product": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "spec",
+            "manufacturer",
+            "approval_number"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "spec": {
+              "type": "string",
+              "minLength": 1
+            },
+            "manufacturer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approval_number": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "qualifications": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "number",
+              "valid_until"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "number": {
+                "type": "string",
+                "minLength": 1
+              },
+              "valid_until": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "purchase_batches": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "batch_id",
+              "trace_code_range",
+              "invoice_summary",
+              "quantity"
+            ],
+            "properties": {
+              "batch_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "trace_code_range": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "prefix",
+                  "start",
+                  "end"
+                ],
+                "properties": {
+                  "prefix": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "end": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "invoice_summary": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "invoice_number",
+                  "seller",
+                  "amount_yuan",
+                  "issued_at"
+                ],
+                "properties": {
+                  "invoice_number": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "seller": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "amount_yuan": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "issued_at": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "shipping_entity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "license_number",
+            "warehouse_region"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "license_number": {
+              "type": "string",
+              "minLength": 1
+            },
+            "warehouse_region": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "temperature_commitment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "range_note"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "常温",
+                "冷藏",
+                "冷冻"
+              ]
+            },
+            "range_note": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "status": {
+          "enum": [
+            "active",
+            "suspended",
+            "removed",
+            "closed"
+          ]
+        },
+        "replaces_version_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "submitted_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "orderSnapshot": {
+      "title": "订单履约快照",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "order_id",
+        "listing_version_id",
+        "page_snapshot_id",
+        "batch_id",
+        "buyer_ref",
+        "fulfilled_by",
+        "ship_from_region",
+        "delivery_region",
+        "placed_at"
+      ],
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "listing_version_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "batch_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "buyer_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fulfilled_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ship_from_region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "delivery_region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "placed_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "riskSignal": {
+      "title": "风险信号",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signal_id",
+        "type",
+        "listing_version_id",
+        "detected_at",
+        "evidence_refs"
+      ],
+      "properties": {
+        "signal_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "duplicate_trace_code",
+            "expired_source_proof",
+            "item_substitution",
+            "cross_region_dropship",
+            "low_price",
+            "cross_region_shipment"
+          ]
+        },
+        "listing_version_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "detected_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "enforcementAction": {
+      "title": "分级处置",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action_id",
+        "level",
+        "listing_version_ids",
+        "signal_ids",
+        "evidence",
+        "order_scope",
+        "recovery_conditions",
+        "status",
+        "decided_by",
+        "decided_at"
+      ],
+      "properties": {
+        "action_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "level": {
+          "enum": [
+            "observe",
+            "restrict",
+            "takedown"
+          ]
+        },
+        "listing_version_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "signal_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "evidence_id",
+              "kind",
+              "ref",
+              "summary"
+            ],
+            "properties": {
+              "evidence_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "order_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "batch_ids",
+            "order_ids"
+          ],
+          "properties": {
+            "batch_ids": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "order_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "recovery_conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "status": {
+          "enum": [
+            "open",
+            "appealed",
+            "upheld",
+            "resolved",
+            "closed"
+          ]
+        },
+        "decided_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decided_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "auditEvent": {
+      "title": "留痕记录",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "kind",
+        "action_id",
+        "actor_role",
+        "created_at",
+        "summary"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "merchant_appeal",
+            "platform_re_review",
+            "regulator_notice",
+            "buyer_notice"
+          ]
+        },
+        "action_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_role": {
+          "enum": [
+            "merchant",
+            "reviewer",
+            "manager",
+            "regulator",
+            "system"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
